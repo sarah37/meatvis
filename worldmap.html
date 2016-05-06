@@ -5,7 +5,7 @@
     <title>World Map</title>
     <script type="text/javascript" src="https://d3js.org/d3.v3.min.js"></script>
     <style type="text/css">
-    /* No style rules here */
+
     </style>
   </head>
 
@@ -13,13 +13,15 @@
     <script type="text/javascript">
 
       //Width and height
-      var w = 1000;
+      var wInfo = 250
+      var wMap = 1000;
       var h = 600;
+
 
       //Define map projection
       var projection = d3.geo.mercator()
-                        .translate([w/2, h/2])
-                        .scale([150]);
+                        .translate([wMap/2, h/2])
+                        .scale([160]);
 
       //Define default path generator
       var path = d3.geo.path()
@@ -28,8 +30,8 @@
       //Create SVG element
       var svg = d3.select("body")
             .append("svg")
-            .attr("width", w)
-            .attr("height", h);
+            .attr("width", (wMap + wInfo))
+            .attr("height", h)
 
       //Load in GeoJSON data
       d3.json("world.json", function(json) {
