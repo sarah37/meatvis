@@ -134,3 +134,21 @@ sub {
   font-weight: 700;
   text-transform: uppercase;
 }
+
+input[type="checkbox"] {
+    display:none;
+}
+
+
+input[type="checkbox"]:checked + label {
+  display: inline-block;
+  text-decoration: none;
+  color: #404040;
+  width: 170px;
+  padding: 10px 0px;
+  margin: 5px;
+  text-align: center;
+  font-family: "Open Sans Condensed", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+}
