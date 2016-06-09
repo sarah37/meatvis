@@ -1,44 +1,130 @@
-#topDiv {
-  padding: 40px 0px;
-  text-align: center;
+/* menu */
+
+.menuDiv {
+  position: relative;
+  width: 1300px;
+  left: 0;
+  right: 0;
+  margin: 80px auto 0px auto;
   color: #E6E6E6;
 }
 
-.navBox, .navBoxActive {
-  display: inline-block;
+.menuDiv a:hover {
+  text-decoration: underline;
+}
+
+.titleDiv {
+  position: absolute;
+  left: 0;
+  top: 0;
+  text-align: left;
+  padding-left: 0;
+}
+
+.titleDiv.textPage {
+  width: 250px;
+}
+
+.navDiv {
+  position: absolute;
+  right: 0;
+  top: 0;
+  text-align: right;
+}
+
+.navDiv, .titleDiv a {
   text-decoration: none;
-  color: #404040;
-  width: 170px;
-  padding: 10px 0px;
-  margin: 5px;
-  text-align: center;
+  color: #E6E6E6;
   font-family: "Open Sans Condensed", sans-serif;
-  font-weight: 700;
+  font-weight: 300;
   text-transform: uppercase;
 }
 
-.navBox {
-    background-color: #ccc;
-}
+/* index */
 
-.navBoxActive {
-    background-color: #fff;
-}
-
-#container {
+.container {
   display: block;
   position: relative;
   left: 0;
   right: 0;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 80px auto 0px auto; 
   width: 1300px;
   height: 600px;
-  border: 1px solid #c8c8c8;
+  }
+
+.container.choice {
+  text-align: center;
+  border: 1px solid #ccc;
+
 }
 
+.container.choice h1 {
+  margin-top: 70px;
+  margin-bottom: 70px;
+  color: #ccc;
+}
+
+/*div label input {
+   margin-right:200px;
+}*/
+
+#ck-button {
+    display: inline-block;
+    margin:5px;
+    background-color:#ccc;
+    overflow:auto;
+    border: 2px solid #333;
+}
+
+#ck-button:hover {
+    transition: border 0.5s ease;
+    border: 2px solid #911;
+}
+
+#ck-button label span {
+    display: inline-block;
+    width:300px;
+    position: relative;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+#ck-button label input {
+    position:absolute;
+    top:-20px;
+}
+
+#ck-button input:checked + span {
+  transition: background-color 0.5s;
+  background-color:#911;
+  color:#fff;
+}
+
+.button {
+    display: inline-block;
+    position: relative;
+    left: 0;
+    right: 0;
+    margin: 50px auto;
+    background-color: #911;
+    border: none;
+    color: white;
+    padding: 20px 50px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border: 2px solid #333;
+}
+
+.button:hover {
+  transition: border 0.5s;
+  border: 1px solid #ccc;
+}
+
+/* map */
+
 #mapDiv {
-  background-color: #ffffff;
+  background-color: #fff;
   position: absolute;
   left: 0px;
   top: 0px;
@@ -47,15 +133,25 @@
 }
 
 #infoDiv {
+  background-color: #f2f2f2;
   position: absolute;
   left: 1000px;
   top: 0px;
   width: 270px;
   height: 495px;
   padding: 15px 15px 90px 15px;
-  background-color: #f2f2f2;
   text-align: left;
   color: #000;
+}
+
+#infoDiv h1 {
+  margin-bottom: 0.2em;
+}
+
+#infoDiv a {
+  text-transform: uppercase;
+  font-size: 0.8em;
+  color: #aaa;
 }
 
 #linkDiv {
@@ -72,23 +168,42 @@
   font-family: "Open Sans Condensed", sans-serif;
   font-weight: 300;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
 }
 
+/* texts */
+
 #textDiv {
-  display: block;
+  position: relative;
+  top: -20px;
   left: 0;
   right: 0;
-  margin: 40px auto;
-  margin-right: auto;
+  margin: 0 auto;
   padding: 20px;
   width: 700px;
+  text-align: left;
   color: #EBF4FA;
   border: 1px solid #c8c8c8;
 }
 
+.linkBack {
+  display: inline-block;
+  text-decoration: none;
+  background-color: #ccc;
+  color: #333;
+  width: 170px;
+  padding: 10px 0px;
+  margin: 5px;
+  text-align: center;
+  font-family: "Open Sans Condensed", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+/* basic */
+
 body {
-  background: #404040;
+  background: #333;
   font-size: 1em;
   font-family: 'Open Sans', sans-serif;
 }
@@ -114,41 +229,20 @@ h2 {
 
 a {
   color: currentColor;
+  text-decoration: none;
 }
 
-sub {
+sub, sup {
   font-size: 0.83em;
-  vertical-align: sub;
   line-height: 0;
 }
 
-.choice {
-  display: inline-block;
-  text-decoration: none;
-  color: #404040;
-  width: 170px;
-  padding: 10px 0px;
-  margin: 5px;
-  text-align: center;
-  font-family: "Open Sans Condensed", sans-serif;
-  font-weight: 700;
-  text-transform: uppercase;
+sub {
+  vertical-align: sub;
 }
 
-input[type="checkbox"] {
-    display:none;
+sup {
+  vertical-align: super;
 }
 
-
-input[type="checkbox"]:checked + label {
-  display: inline-block;
-  text-decoration: none;
-  color: #404040;
-  width: 170px;
-  padding: 10px 0px;
-  margin: 5px;
-  text-align: center;
-  font-family: "Open Sans Condensed", sans-serif;
-  font-weight: 700;
-  text-transform: uppercase;
-}
+/* choice menu */

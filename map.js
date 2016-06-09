@@ -25,11 +25,16 @@ mapDiv = d3.select("#mapDiv");
 infoDiv = d3.select("#infoDiv");
 linkDiv = d3.select("#linkDiv");
 
-//Define map projection
-var projection = d3.geo.mercator()
-  .translate([wMap/2, h/2])
-  .scale([159]);
 
+//Define map projection
+
+// **BK**
+//now using Mollweide equal area projection
+var projection = d3.geo.mollweide()
+		.scale(220)
+		.translate([ (wMap /2)-50, h / 2 ]);
+// **BK**
+            
 //Define default path generator
 var path = d3.geo.path()
   .projection(projection);
@@ -42,14 +47,15 @@ var svg = d3.select("#mapDiv")
 
 showInfobox(0, 0, 0, 0, 0);
 
-//Load in GeoJSON data
-d3.json("world.json", function(json) {
-        
-//Bind data and create one path per GeoJSON feature
-svg.selectAll("path")
-  .data(json.features)
-  .enter()
-  .append("path")
+// **BK**
+//Load in TopoJSON data
+d3.json("world-110m.json", function(json) {
+
+// **BK**
+//now using TopoJSOn file and paths
+//Bind data and create one path per TopoJSON feature
+svg.append("path")
+  .datum(topojson.feature(json, json.objects.countries))
   .attr("d", path)
   .style("fill", "#e6e6e6")
   .style("stroke", "#cccccc");
@@ -99,17 +105,18 @@ d3.csv("meatdata.csv", function(data) {
           var info = d.info;
           var colour = c[d.type];
           var type = d.type;
-          showInfobox(title, category, info, colour, 1);
+          var reference = d.reference;
+          showInfobox(title, category, info, colour, reference, 1);
           showLink(colour, type, category, 1);
           d3.event.stopPropagation();
     });
 });
 });
       
-function showInfobox(place, subtitle, text, colour, on) {
+function showInfobox(place, subtitle, text, colour, reference, on) {
   if (on == 1) {
 //    d3.select("#infoDiv").style("background-color", colour);
-    d3.select("#infoDiv").html("<h1 style=\"color: " + colour + "\">" + place + "</h1><br><h2 style=\"color: " + colour+ "\">" + subtitle + "</h2><br>" + text);
+    d3.select("#infoDiv").html("<h1 style=\"color: " + colour + "\">" + place + "</h1><h2 style=\"color: " + colour + "\">" + subtitle + "</h2><br>" + text + "<br><a href='" + reference + "' target='_blank'>[SOURCE]</a>");
   }
   else {
     d3.select("#infoDiv").html("<h1>Click on a dot!</h1>");
@@ -120,7 +127,7 @@ function showLink(colour, type, category, on) {
   if (on == 1) {
     d3.select("#linkDiv")
       .style("background-color", colour)
-      .attr("href", type + ".html");
+      .attr("href", "info/" + type + ".html");
     linkDiv.html("Learn more about<br><b>" + category + "</b>");
   }
   else {
